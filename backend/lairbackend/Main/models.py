@@ -10,6 +10,7 @@ class Movie (models.Model):
     genre = models.CharField(max_length=120)
     language = models.CharField(max_length=120)
     synopsis = models.TextField()
+    thumbnail = models.ImageField(default='default.png', blank=True)
 
     def __str__(self):
         return self.title
