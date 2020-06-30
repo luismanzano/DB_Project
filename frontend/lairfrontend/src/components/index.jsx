@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Home from './Home'
+import AdminPeliculas from './AdminPeliculas'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.css';
 
