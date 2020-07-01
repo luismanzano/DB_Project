@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import Home from './Home'
-import AdminPeliculas from './AdminPeliculas'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.css';
+import Administrador from './Administrador';
 
 class App extends Component{
     constructor(...props){
@@ -16,7 +16,7 @@ class App extends Component{
     render(){
         return(
             <div className="fondo">
-                <Home/>
+                <Administrador/>
             </div>
             
         )
