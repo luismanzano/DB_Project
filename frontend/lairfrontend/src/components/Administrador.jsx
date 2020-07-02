@@ -96,7 +96,7 @@ const Administrador = () => (
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div> 
 
             <div className="col-md-10 fondoGris offset-1 gap-up">
                 <div className="btn btn-group btn-gruop-lg toggle container-fluid">
