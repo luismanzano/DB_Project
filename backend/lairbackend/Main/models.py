@@ -15,3 +15,111 @@ class Movie (models.Model):
     def __str__(self):
         return self.title
 
+class Entradas(models.Model):
+    serial = models.CharField(unique=True, max_length=50)
+    costo = models.FloatField()
+    id_productos = models.ForeignKey('Producto', models.DO_NOTHING, db_column='id_productos')
+    id_proyecciones = models.ForeignKey('Proyecciones', models.DO_NOTHING, db_column='id_proyecciones')
+
+    class Meta:
+        managed = False
+        db_table = 'entradas'
+
+
+class MainMovie(models.Model):
+    title = models.CharField(max_length=120)
+    duration = models.IntegerField()
+    reparto = models.TextField()
+    showing = models.IntegerField()
+    director = models.CharField(max_length=120)
+    genre = models.CharField(max_length=120)
+    language = models.CharField(max_length=120)
+    synopsis = models.TextField()
+    thumbnail = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'main_movie'
+
+
+class Producto(models.Model):
+    id = models.IntegerField(primary_key=True)
+    tipo = models.IntegerField()
+    id_venta = models.ForeignKey('Venta', models.DO_NOTHING, db_column='id_venta')
+
+    class Meta:
+        managed = False
+        db_table = 'producto'
+
+
+class Proyecciones(models.Model):
+    id = models.IntegerField(primary_key=True)
+    fecha = models.DateField()
+    inicio = models.TimeField()
+    id_salas = models.ForeignKey('Salas', models.DO_NOTHING, db_column='id_salas')
+    id_pelicula = models.ForeignKey(MainMovie, models.DO_NOTHING, db_column='id_pelicula')
+    asientos_vendidos = models.FloatField()
+
+    class Meta:
+        managed = False
+        db_table = 'proyecciones'
+
+
+class Salas(models.Model):
+    id = models.IntegerField(primary_key=True)
+    asientos_totales = models.PositiveIntegerField()
+    filas = models.PositiveIntegerField()
+    columnas = models.PositiveIntegerField()
+    number_3d = models.IntegerField(db_column='3d')  # Field renamed because it wasn't a valid Python identifier.
+    vip = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'salas'
+
+class Cliente(models.Model):
+    cedula = models.PositiveIntegerField(unique=True)
+    nombre = models.CharField(max_length=100)
+    email = models.CharField(unique=True, max_length=50)
+    estado = models.CharField(max_length=100)
+    nacimiento = models.DateField()
+    apellido = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'cliente'
+
+
+class Venta(models.Model):
+    serial = models.IntegerField(primary_key=True)
+    fecha = models.DateTimeField()
+    id_cliente = models.ForeignKey(Cliente, models.DO_NOTHING, db_column='id_cliente')
+    monto_total = models.FloatField()
+
+    class Meta:
+        managed = False
+        db_table = 'venta'
+
+
+
+class Alimentos(models.Model):
+    nombre = models.CharField(max_length=100)
+    costo = models.FloatField()
+    cantidad = models.FloatField()
+    categoria = models.CharField(max_length=150)
+    caducidad = models.DateField()
+    id_producto = models.ForeignKey('Producto', models.DO_NOTHING, db_column='id_producto')
+
+    class Meta:
+        managed = False
+        db_table = 'alimentos'
+
+
+class AsientosOcupados(models.Model):
+    columna = models.IntegerField()
+    fila = models.IntegerField()
+    id_funciones = models.ForeignKey('Proyecciones', models.DO_NOTHING, db_column='id_funciones')
+
+    class Meta:
+        managed = False
+        db_table = 'asientos_ocupados'
