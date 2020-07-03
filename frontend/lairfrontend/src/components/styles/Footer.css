@@ -1,8 +1,18 @@
 .social{
-    width: 55%;
+    width: 110%;
+    margin-top: 0;
 }
 
-.logos{
+.placa{
+    text-align: right;
+    color: whitesmoke;
+}
+
+#logo{
     margin-top: 1em;
     margin-bottom: 1em;
+    margin-right: 15px;
+    margin-left: 15px;
+    filter: invert(100%);
 }
+

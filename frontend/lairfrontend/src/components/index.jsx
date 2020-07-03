@@ -16,7 +16,7 @@ class App extends Component{
     render(){
         return(
             <div className="fondo">
-                <Administrador/>
+                <Home/>
             </div>
             
         )

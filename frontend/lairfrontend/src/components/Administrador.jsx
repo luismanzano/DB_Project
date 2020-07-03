@@ -65,36 +65,37 @@ const Administrador = () => (
                 </div>
 
                 <div class="modal fade" id="AggAlim" tabindex="-1" role="dialog" aria-labelledby="AggAlim" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
+                    <div class="modal-dialog table-dark">
+                        <div class="modal-content table-dark">
+                            <div class="modal-header table-dark">
                                 <h3 class="modal-title">Agregar Alimento</h3>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body ">
                                 <form action="">
                                     <div>
-                                        <br/>
+                                        <label className="text-dark">Por favor rellene todos los campos</label>
+                                        <br />
                                         <label class="sr-only">Nombre</label>
-                                        <input type="text" class="form-control" placeholder="Nombre"/>  
-                                        <br/>
+                                        <input type="text" class="form-control" placeholder="Nombre" />
+                                        <br />
                                         <label class="sr-only">Costo</label>
-                                        <input type="text" class="form-control" placeholder="Costo"/>  
-                                        <br/>
+                                        <input type="text" class="form-control" placeholder="Costo" />
+                                        <br />
                                         <label class="sr-only">Cantidad</label>
-                                        <input type="text" class="form-control" placeholder="Cantidad"/>  
-                                        <br/>
+                                        <input type="text" class="form-control" placeholder="Cantidad" />
+                                        <br />
                                         <label class="sr-only">Categoria</label>
-                                        <input type="text" class="form-control" placeholder="Categoria"/>  
-                                        <br/>
+                                        <input type="text" class="form-control" placeholder="Categoria" />
+                                        <br />
                                         <label class="sr-only">Caducidad</label>
-                                        <input type="text" class="form-control" placeholder="Caducidad"/>  
-                                        <br/>
+                                        <input type="text" class="form-control" placeholder="Caducidad" />
+                                        <br />
                                     </div>
-                                    
+
                                 </form>
                             </div>
-                            <div class="modal-footer">
+                            <div class="modal-footer table-dark">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                 <button type="button" class="btn btn-primary">Agregar</button>
                             </div>
@@ -164,39 +165,40 @@ const Administrador = () => (
                 </div>
 
                 <div class="modal fade" id="AggPeli" tabindex="-1" role="dialog" aria-labelledby="AggPeli" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h3 class="modal-title">Agregar Pelicula</h3>
+                    <div class="modal-dialog table-dark">
+                        <div class="modal-content table-dark">
+                            <div class="modal-header table-dark">
+                                <h3 class="modal-title table-dark">Agregar Pelicula</h3>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             </div>
                             <div class="modal-body">
                                 <form action="">
                                     <div>
-                                        <br/>
+                                        <label className="text-dark">Por favor rellene todos los campos</label>
+                                        <br />
                                         <label class="sr-only">Titulo</label>
-                                        <input type="text" class="form-control" placeholder="Titulo"/>  
-                                        <br/>
+                                        <input type="text" class="form-control" placeholder="Titulo" />
+                                        <br />
                                         <label class="sr-only">Duración</label>
-                                        <input type="text" class="form-control" placeholder="Duración"/>  
-                                        <br/>
+                                        <input type="text" class="form-control" placeholder="Duración" />
+                                        <br />
                                         <label class="sr-only">Director</label>
-                                        <input type="text" class="form-control" placeholder="Director"/>  
-                                        <br/>
+                                        <input type="text" class="form-control" placeholder="Director" />
+                                        <br />
                                         <label class="sr-only">Genero</label>
-                                        <input type="text" class="form-control" placeholder="Genero"/>  
-                                        <br/>
+                                        <input type="text" class="form-control" placeholder="Genero" />
+                                        <br />
                                         <label class="sr-only">Idioma</label>
-                                        <input type="text" class="form-control" placeholder="Idioma"/>  
-                                        <br/>
+                                        <input type="text" class="form-control" placeholder="Idioma" />
+                                        <br />
                                         <label class="sr-only">Proyecciones</label>
-                                        <input type="text" class="form-control" placeholder="Proyecciones"/>  
-                                        <br/>
+                                        <input type="text" class="form-control" placeholder="Proyecciones" />
+                                        <br />
                                     </div>
-                                    
+
                                 </form>
                             </div>
-                            <div class="modal-footer">
+                            <div class="modal-footer table-dark">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                 <button type="button" class="btn btn-primary">Agregar</button>
                             </div>
@@ -264,33 +266,34 @@ const Administrador = () => (
                 </div>
 
                 <div class="modal fade" id="AggProy" tabindex="-1" role="dialog" aria-labelledby="AggProy" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h3 class="modal-title">Agregar Alimento</h3>
+                    <div class="modal-dialog table-dark">
+                        <div class="modal-content table-dark">
+                            <div class="modal-header table-dark">
+                                <h3 class="modal-title table-dark">Agregar Alimento</h3>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             </div>
                             <div class="modal-body">
                                 <form action="">
                                     <div>
-                                        <br/>
+                                        <label className="text-dark">Por favor rellene todos los campos</label>
+                                        <br />
                                         <label class="sr-only">Fecha</label>
-                                        <input type="text" class="form-control" placeholder="Fecha"/>  
-                                        <br/>
+                                        <input type="text" class="form-control" placeholder="Fecha" />
+                                        <br />
                                         <label class="sr-only">Hora de Inicio</label>
-                                        <input type="text" class="form-control" placeholder="Hora de Inicio"/>  
-                                        <br/>
+                                        <input type="text" class="form-control" placeholder="Hora de Inicio" />
+                                        <br />
                                         <label class="sr-only">Sala</label>
-                                        <input type="text" class="form-control" placeholder="Sala"/>  
-                                        <br/>
+                                        <input type="text" class="form-control" placeholder="Sala" />
+                                        <br />
                                         <label class="sr-only">Pelicula</label>
-                                        <input type="text" class="form-control" placeholder="Pelicula"/>  
-                                        <br/>
+                                        <input type="text" class="form-control" placeholder="Pelicula" />
+                                        <br />
                                     </div>
-                                    
+
                                 </form>
                             </div>
-                            <div class="modal-footer">
+                            <div class="modal-footer table-dark">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                 <button type="button" class="btn btn-primary">Agregar</button>
                             </div>
