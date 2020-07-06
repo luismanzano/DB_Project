@@ -8,10 +8,16 @@ ClienteViewSet,
 SalasViewSet,
 VentasViewSet,
 AlimentosViewSet,
-AsientosOcupadosViewSet
+AsientosOcupadosViewSet,
+CarteleraView,
+ProyeccionesView
 )
 from rest_framework.routers import DefaultRouter
 # from .views import MovieListView, MovieDetailView, MovieCreateView, MovieUpdateView
+
+urlpatterns = [
+    path('proyeccionesPelicula/<pk>', ProyeccionesView.as_view())
+]
 
 router = DefaultRouter()
 router.register(r'movies', MovieViewSet, basename='movies')
@@ -23,7 +29,12 @@ router.register(r'salas', SalasViewSet, basename='salas')
 router.register(r'ventas', VentasViewSet, basename='ventas')
 router.register(r'alimentos', AlimentosViewSet, basename='alimentos')
 router.register(r'asientos', AsientosOcupadosViewSet, basename='asientos')
-urlpatterns = router.urls
+
+#Url especificos
+router.register(r'cartelera', CarteleraView, basename='cartelera')
+#router.register(r'proyeccionesPelicula', ProyeccionesView, basename='proyeccionesPelicula')
+
+urlpatterns +   = router.urls
 
 
 # urlpatterns = [
