@@ -62,3 +62,8 @@ class AsientosOcupadosSerializer(serializers.ModelSerializer):
     class Meta:
         model = AsientosOcupados
         fields = ('columna', 'fila', 'id_funciones')
+
+# class CarteleraSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Movie
+#         fields = ('title', 'duration', 'reparto', 'showing', 'director', 'genre', 'language', 'synopsis')

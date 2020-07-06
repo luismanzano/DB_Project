@@ -91,6 +91,35 @@ class AsientosOcupadosViewSet(viewsets.ModelViewSet):
     serializer_class = AsientosOcupadosSerializer
     queryset = AsientosOcupados.objects.all()
 
+
+
+
+
+##A PARTIR DE ACA EMPIEZAN LOS QUERIES AVANZADOS
+class CarteleraView(viewsets.ModelViewSet):
+    serializer_class = MovieSerializer
+
+    queryset = Movie.objects.all().filter(showing=True)
+
+
+class ProyeccionesView(ListAPIView):
+    serializer_class = ProyeccionesSerializer
+
+    def get_queryset(self):
+        """
+        This view should return a list of all the purchases for
+        the user as determined by the username portion of the URL.
+        """
+        idPeli = self.kwargs['pk']
+        return Proyecciones.objects.filter(id_pelicula=idPeli)
+
+
+
+
+
+
+
+
 # class MovieListView(ListAPIView):
 #     queryset = Movie.objects.all()
 #     serializer_class = MovieSerializer
