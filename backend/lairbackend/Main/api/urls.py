@@ -34,7 +34,7 @@ router.register(r'asientos', AsientosOcupadosViewSet, basename='asientos')
 router.register(r'cartelera', CarteleraView, basename='cartelera')
 #router.register(r'proyeccionesPelicula', ProyeccionesView, basename='proyeccionesPelicula')
 
-urlpatterns +   = router.urls
+urlpatterns += router.urls
 
 
 # urlpatterns = [
