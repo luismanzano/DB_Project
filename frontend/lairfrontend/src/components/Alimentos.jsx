@@ -15,9 +15,6 @@ import Alimento from './Alimento'
 
 const Alimentos = ()=>(
     <div className="container">
-        <NavBar/>
-        <div className="row">
-            <div className="col-md-10 fondoGris offset-1 gap-up">
                 <Router>
                     <div className="row gap-up">
                         <div className="col-md-4 text-right">
@@ -34,9 +31,6 @@ const Alimentos = ()=>(
                 <Route path="/combos" component={Combos}/>
                 <Route path="/carrito" component={Carrito}/>
                 </Router>
-            </div>
-        </div>
-        <Footer/>
     </div>
 )
 export default Alimentos
