@@ -15,6 +15,9 @@ import {
 } from 'react-router-dom'
 import Footer from './Footer'
 
+import './index.css'
+import 'bootstrap/dist/css/bootstrap.css';
+import Administrador from './Administrador';
 
 class App extends Component{
     constructor(...props){
@@ -40,7 +43,7 @@ class App extends Component{
                                 <Route path="/cartelera" component={withRouter(Cartelera)}/>
                                 <Route exact path="/alimentos" exact component={Alimentos}/>
                                 <Route exact path="/contacto" exact component={Contacto}/>
-                                <Route exact path="/admin" exact component={Home}/>
+                                <Route exact path="/admin" exact component={Administrador}/>
                             </Switch>
                         </div>
                     </div>
