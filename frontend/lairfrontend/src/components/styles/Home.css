@@ -1,0 +1,39 @@
+.peliculas{
+    height: 5em;
+    width: 100%;
+}
+
+#popcorn{
+    width: 50%;
+    margin-top: 0;
+}
+
+#popcorn2{
+    width: 50%;
+    margin-top: 0;
+    object-position: right;
+}
+
+.imagen{
+    padding: 0;
+}
+
+#secret{
+    margin-top: auto;
+}
+
+.pelicula{
+    width: 110%;
+    height: 14em;
+}
+
+.secretCombo{
+    cursor: pointer;
+}
+
+
+
+
+
+
+
