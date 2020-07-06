@@ -4,10 +4,9 @@ import Footer from './Footer'
 
 const Administrador = () => (
     <div className="container">
-        <NavBar />
         <div className="row">
 
-            <div className="col-md-10 fondoGris offset-1 gap-up">
+            <div className="col-md-10 offset-1 gap-up">
 
                 <div className="btn btn-group btn-group-lg toggle container-fluid">
                     <button className="btn btn-dark" type="button" data-toggle="collapse" data-target="#Alim" aria-expanded="false" aria-controls="Alim"><b>Alimentos</b></button>
@@ -105,7 +104,7 @@ const Administrador = () => (
 
             </div>
 
-            <div className="col-md-10 fondoGris offset-1 gap-up">
+            <div className="col-md-10 offset-1 gap-up">
 
                 <div className="btn btn-group btn-group-lg toggle container-fluid">
                     <button className="btn btn-dark" type="button" data-toggle="collapse" data-target="#Peli" aria-expanded="false" aria-controls="Peli"><b>Peliculas</b></button>
@@ -208,7 +207,7 @@ const Administrador = () => (
 
             </div>
 
-            <div className="col-md-10 fondoGris offset-1 gap-up">
+            <div className="col-md-10 offset-1 gap-up gap-down">
 
                 <div className="btn btn-group btn-group-lg toggle container-fluid">
                     <button className="btn btn-dark" type="button" data-toggle="collapse" data-target="#Proy" aria-expanded="false" aria-controls="Proy"><b>Proyecciones</b></button>
@@ -304,7 +303,6 @@ const Administrador = () => (
             </div>
 
         </div>
-        <Footer />
     </div>
 )
 
