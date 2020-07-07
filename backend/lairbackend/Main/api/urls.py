@@ -10,14 +10,15 @@ VentasViewSet,
 AlimentosViewSet,
 AsientosOcupadosViewSet,
 CarteleraView,
-ProyeccionesView
+ProyeccionesView,
+AsientosOcupadosView
 )
 from rest_framework.routers import DefaultRouter
 # from .views import MovieListView, MovieDetailView, MovieCreateView, MovieUpdateView
 
 urlpatterns = [
     path('proyeccionesPelicula/<pk>', ProyeccionesView.as_view()),
-    path('asientosDesocupados/<pk>', AsientosDesocupados.as_view()),
+    path('asientosOcupados/<pk>', AsientosOcupadosView.as_view()),
 ]
 
 router = DefaultRouter()
