@@ -16,7 +16,8 @@ from rest_framework.routers import DefaultRouter
 # from .views import MovieListView, MovieDetailView, MovieCreateView, MovieUpdateView
 
 urlpatterns = [
-    path('proyeccionesPelicula/<pk>', ProyeccionesView.as_view())
+    path('proyeccionesPelicula/<pk>', ProyeccionesView.as_view()),
+    path('asientosDesocupados/<pk>', AsientosDesocupados.as_view()),
 ]
 
 router = DefaultRouter()

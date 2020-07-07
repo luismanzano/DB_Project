@@ -114,6 +114,18 @@ class ProyeccionesView(ListAPIView):
         return Proyecciones.objects.filter(id_pelicula=idPeli)
 
 
+class ProyeccionesView(ListAPIView):
+    serializer_class = ProyeccionesSerializer
+
+    def get_queryset(self):
+        """
+        This view should return a list of all the purchases for
+        the user as determined by the username portion of the URL.
+        """
+        idPeli = self.kwargs['pk']
+        return Proyecciones.objects.filter(id_pelicula=idPeli)
+
+
 
 
 
