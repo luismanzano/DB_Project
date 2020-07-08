@@ -18,6 +18,7 @@ import Footer from './Footer'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import Administrador from './Administrador';
+import MovieView from './MovieView';
 
 class App extends Component{
     constructor(...props){
@@ -44,6 +45,7 @@ class App extends Component{
                                 <Route exact path="/alimentos" exact component={Alimentos}/>
                                 <Route exact path="/contacto" exact component={Contacto}/>
                                 <Route exact path="/admin" exact component={Administrador}/>
+                                <Route exact path="/movieView/:handle" exact component={MovieView}/>
                             </Switch>
                         </div>
                     </div>

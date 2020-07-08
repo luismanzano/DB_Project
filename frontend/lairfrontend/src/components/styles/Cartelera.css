@@ -1,0 +1,22 @@
+.pelis{
+    display: inline-grid;
+    grid-template-columns: repeat(5, 130px);
+    grid-column-gap: 3.5em;
+    grid-row-gap: 2em;
+}
+.pelicula{
+    cursor: pointer;
+}
+
+.comprar{
+    position: absolute;
+    background-color:rgba(64, 64, 64, 0.6);
+    width: 100%;
+    bottom: 0;
+    display: none;
+}
+
+.contenedor:hover .comprar{
+    display: block;
+}
+
