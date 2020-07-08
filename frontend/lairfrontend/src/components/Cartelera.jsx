@@ -6,7 +6,6 @@ import trailer from './images/trailer.png'
 import {Link} from 'react-router-dom'
 
 const url = `http://127.0.0.1:8000/api/movies/`
-const movies = []
 
 export default class Cartelera extends Component{
 
@@ -23,8 +22,8 @@ export default class Cartelera extends Component{
         componentDidMount(){
             axios.get(url)
             .then(res=>{
-               const movies = res.data;
-               this.setState({movies});
+               const movies = res.data.results;
+               this.setState({movies:movies});
             })
         }
 
@@ -45,7 +44,7 @@ export default class Cartelera extends Component{
                                     <div className="comprar">
                                         <div className="row">
                                                 <div className="col-md-4">
-                                                <Link to={`/movieView/${movie.title}`} style={{color:'white', fontFamily:'Gill Sans'}} ><img id="select" src={comprar} alt=""/></Link>
+                                                <Link to={`/movieView/${movie.id}`} style={{color:'white', fontFamily:'Gill Sans'}} ><img id="select" src={comprar} alt=""/></Link>
                                                 </div>
                                                 <div className="col-md-4 offset-3">
                                                     <a href=""><img id="select2" src={trailer} alt=""/></a>
