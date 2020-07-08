@@ -84,9 +84,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'lair_cinema',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': 'eidansantiago19',
         'HOST': 'localhost',
-        'PORT': '3307',
+        'PORT': '3306',
     }
 }
 
