@@ -125,6 +125,10 @@ class AsientosOcupadosView(ListAPIView):
         funcion = self.kwargs['pk']
         return AsientosOcupados.objects.filter(id_funciones=funcion)
 
+class top5View(ListAPIView):
+    serializer_class = MovieSerializer
+
+    queryset = Movie.objects.all().order_by('-id')[:5]
 
 
 

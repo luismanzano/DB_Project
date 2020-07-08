@@ -14,7 +14,7 @@ AsientosOcupados
 class MovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
-        fields = ('title', 'duration', 'reparto', 'showing', 'director', 'genre', 'language', 'synopsis')
+        fields = ('title', 'duration', 'reparto', 'showing', 'director', 'genre', 'language', 'synopsis', 'thumbnail')
 
 
 class EntradasSerializer(serializers.ModelSerializer):
