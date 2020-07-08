@@ -40,7 +40,7 @@ export default class Cartelera extends Component{
                             {this.state.movies.map(movie =>(
                                 console.log(movie.id),
                                 <div className="contenedor">
-                                    <img className="pelicula" src="https://es.web.img2.acsta.net/pictures/19/11/12/12/25/0815514.jpg" alt=""/>
+                                    <img className="pelicula" src={movie.thumbnail} alt=""/>
                                     <div className="comprar">
                                         <div className="row">
                                                 <div className="col-md-4">
