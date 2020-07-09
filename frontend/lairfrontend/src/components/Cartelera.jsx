@@ -5,6 +5,8 @@ import comprar from './images/comprar.png'
 import trailer from './images/trailer.png'
 import {Link} from 'react-router-dom'
 
+
+
 const url = `http://127.0.0.1:8000/api/movies/`
 
 export default class Cartelera extends Component{
@@ -13,11 +15,13 @@ export default class Cartelera extends Component{
         super(...props)
 
         this.state={
-            movies:[]
+            movies:[],
         }
     }
 
-    
+
+
+
 
         componentDidMount(){
             axios.get(url)
@@ -39,27 +43,30 @@ export default class Cartelera extends Component{
                         <div className="col-md-10 offset-1 gap-up gap-down pelis">
                             {this.state.movies.map(movie =>(
                                 <div className="contenedor" key={movie.id}>
-                                    <img className="pelicula" src={movie.thumbnail} alt=""/>
+                                    <Link to={`/movieView/${movie.id}`} style={{color:'white', fontFamily:'Gill Sans'}} >
+                                        <img className="pelicula" src={movie.thumbnail} alt=""/>
+                                    </Link>  
                                     <div className="comprar">
                                         <div className="row">
-                                                <div className="col-md-4">
+                                            <div className="col-md-4">
                                                 <Link to={`/movieView/${movie.id}`} style={{color:'white', fontFamily:'Gill Sans'}} ><img id="select" src={comprar} alt=""/></Link>
-                                                </div>
-                                                <div className="col-md-4 offset-3">
-                                                    <a href=""><img id="select2" src={trailer} alt=""/></a>
-                                                </div>
+                                            </div>
+                                            <div className="col-md-4 offset-3">
+                                                <img id="select2" src={trailer} alt=""/>
+                                            </div>
                                         </div>
-                                    </div>   
+                                    </div>
                                 </div>
                             ))}
                         </div>
                     </div>   
                 </div>
-            )
-
-            
+            ) 
         }
 }
+
+
+
 
 
 
