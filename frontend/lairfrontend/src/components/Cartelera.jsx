@@ -38,8 +38,7 @@ export default class Cartelera extends Component{
                     <div className="row">
                         <div className="col-md-10 offset-1 gap-up gap-down pelis">
                             {this.state.movies.map(movie =>(
-                                console.log(movie.id),
-                                <div className="contenedor">
+                                <div className="contenedor" key={movie.id}>
                                     <img className="pelicula" src={movie.thumbnail} alt=""/>
                                     <div className="comprar">
                                         <div className="row">

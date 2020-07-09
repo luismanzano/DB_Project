@@ -1,0 +1,52 @@
+#imagen{
+    width: 100%;
+}
+
+.sip{
+    border-width: medium;
+    border-style: solid;
+    border-color: white;
+    border-radius: 10px;
+    margin-left: 1em;
+}
+
+.sipnosis{
+    margin-top: 0.5em;
+}
+
+.titulo{
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.titulo2{
+    color: rgba(28,10,88,1);
+    font-size: larger;
+    font-weight: bold;
+}
+
+.texto{
+    color:white;
+    font-size: medium;
+}
+
+#director{
+    color:rgba(28,10,88,1); 
+    font-weight: bold;
+}
+
+.imagen{
+    margin-left: 1.5em;
+}
+
+hr{
+ background-color: white;
+}
+
+.funcion{
+    text-transform: uppercase;
+}
+
+#botonCompra{
+    width: 2em;
+}

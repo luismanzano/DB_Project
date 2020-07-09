@@ -45,7 +45,7 @@ class App extends Component{
                                 <Route exact path="/alimentos" exact component={Alimentos}/>
                                 <Route exact path="/contacto" exact component={Contacto}/>
                                 <Route exact path="/admin" exact component={Administrador}/>
-                                <Route exact path="/movieView/:handle" exact component={MovieView}/>
+                                <Route exact path="/movieView/:id" exact component={MovieView}/>
                             </Switch>
                         </div>
                     </div>
