@@ -92,7 +92,7 @@ class Cliente(models.Model):
 
 class Venta(models.Model):
     serial = models.IntegerField(primary_key=True)
-    fecha = models.DateTimeField()
+    fecha = models.DateField()
     id_cliente = models.ForeignKey(Cliente, models.DO_NOTHING, db_column='id_cliente')
     monto_total = models.FloatField()
 

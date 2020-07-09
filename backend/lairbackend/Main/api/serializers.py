@@ -49,7 +49,7 @@ class ClienteSerializer(serializers.ModelSerializer):
 class VentaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Venta
-        fields = ('id', 'serial', 'fecha', 'id_cliente', 'monto_total')
+        fields = ('serial', 'fecha', 'id_cliente', 'monto_total')
 
 
 class AlimentosSerializer(serializers.ModelSerializer):
