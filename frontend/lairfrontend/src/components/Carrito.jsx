@@ -3,6 +3,25 @@ import axios from 'axios'
 
 function Carrito(){
 
+    function pay(carrito, e){
+        e.preventDefault();
+
+        carrito.map(alimento => {
+            axios.get(`http://127.0.0.1:8000/api/alimentos/${alimento.id}`)
+            .then( res => {
+                let cant = res.data.cantidad - alimento.cantidad
+                console.log('pagando', res)
+                axios.put(`http://127.0.0.1:8000/api/alimentos/${alimento.id}`, {
+                    cantidad: cant
+                })
+
+
+            })
+        })
+
+        axios.post(`http://127.0.0.1:8000/api/venta`)
+    }
+
     const getAlimentos = `http://127.0.0.1:8000/api/alimentos/`
 
 
@@ -11,7 +30,7 @@ function Carrito(){
 
     const [fullCarro, setFullCarro] = useState(null)
 
-    if(carrito == ''){
+    if(carrito == '' || carrito == null){
         return(
         <div className="container">
         <div className="row">
@@ -23,48 +42,13 @@ function Carrito(){
         )
     }
 
-else if (carrito != ''){
+else if (carrito != null && carrito != ''){
     carrito = JSON.parse(carrito)
     console.log('el carrito del carrito', carrito)
 
-    for(var i = 0; i<carrito.length; i++){
-
-    }
-
-    var flag = false
-
     for(let i = 0; i<carrito.length; i++){
-        var alimento = getAlimentos.concat(carrito[i].id);
-        console.log('er alimento3', alimento)
-        
-            axios.get(alimento).then(res => {
-                console.log('er alimento 2', res.data)
-                console.log('Carrito normal', carrito)
-                console.log('Carrito[i]', carrito[i])
-
-
-                 carrito[i].nombre = res.data.nombre
-                 carrito[i].costo = res.data.costo
-            })
-
-            montoTotal += carrito[i].cantidad * carrito[i].costo;
-            if(carrito[carrito.length-1].nombre){
-                flag = true
-            }
+        montoTotal += carrito[i].cantidad * carrito[i].costo
     }
-
-
-
-    // setFullCarro(carrito);
-    // console.log('fullCarro', fullCarro);
-
-    if(flag == false) {
-        return(
-            <h2>Cargando</h2>
-        )
-    }
-
-    else if (flag == true){
         return(
             <div className="container">
                 <div className="row">
@@ -95,7 +79,7 @@ else if (carrito != ''){
         
                         <div className="row">
                             <div className="col-md-3 offset-9 text-center gap-up gap-down">
-                                <button className="boton">Pagar</button>
+                                <button className="btn btn-success" onClick={(e) => pay(carrito, e)}>Pagar</button>
                             </div>
                         </div>
                     </div>
@@ -108,7 +92,4 @@ else if (carrito != ''){
 
     
 }
-    
-}
-
 export default Carrito

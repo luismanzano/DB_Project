@@ -18,7 +18,7 @@ function Alimento(){
 
     
     //FUNCION QUE AGREGA ELEMENTOS AL CARRITO
-    function addCart(obj, e){
+    function addCart(obj, name, cost, e){
         e.preventDefault();
         var carrito = [];
 
@@ -30,7 +30,9 @@ function Alimento(){
             console.log('anadiendo producto desde cero')
             carrito.push({
             id: obj,
-            cantidad: 1
+            cantidad: 1,
+            nombre: name,
+            costo: cost
         })
 
         localStorage.setItem('carrito', JSON.stringify(carrito));
@@ -58,7 +60,9 @@ function Alimento(){
                 console.log('No match, adding product')
                 carrito.push({
                     id: obj,
-                    cantidad: 1
+                    cantidad: 1,
+                    nombre: name,
+                    costo: cost
                 })
                 localStorage.setItem('carrito', JSON.stringify(carrito));
             }
@@ -104,7 +108,7 @@ function Alimento(){
                         <div className='col-md-2'>{alimento.costo}</div>
                         <div className='col-md-3'>
 
-                        {(alimento.cantidad > 0) ? <div className='btn btn-success' onClick={(e) => addCart(alimento.id, e)}>Anadir</div> : <div className='btn btn-secondary'>Agotado</div>}
+                        {(alimento.cantidad > 0) ? <div className='btn btn-success' onClick={(e) => addCart(alimento.id, alimento.nombre, alimento.costo, e)}>Anadir</div> : <div className='btn btn-secondary'>Agotado</div>}
                           </div>
                     </div>
   ))}
