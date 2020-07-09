@@ -1,24 +1,54 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios'
+import '../App.css'
 
 function Alimento(){
 
-    window.localStorage.setItem('carrito', [])
+    // const dummy = {
+    //     alimentos: [
+    //         {
+    //         id:0,
+    //         cantidad:0
+    //         }
+    //     ]
+    // }
+
+   
+    //console.log('localstorage', JSON.parse(localStorage.getItem('carrito')))
+
+    
     //FUNCION QUE AGREGA ELEMENTOS AL CARRITO
     function addCart(obj, e){
         e.preventDefault();
-        console.log('carrito length', carrito.alimentos.length)
-        alert(obj);
+        var carrito = [];
 
-        carro = localStorage.getItem('carrito')
+        if(!localStorage.getItem('carrito')){
+            window.localStorage.setItem('carrito', '')
+        }
 
-        if (carrito.alimentos.length != 0) {
+        if(localStorage.getItem('carrito') == ''){
+            console.log('anadiendo producto desde cero')
+            carrito.push({
+            id: obj,
+            cantidad: 1
+        })
+
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        }
+
+
+        if (localStorage.getItem('carrito') != '') {
+
+            carrito = JSON.parse(localStorage.getItem('carrito'))
+            console.log('aver si esta mierda funciona', carrito)
+
             console.log('analizando')
          var flag = false   
-        for(var i=0; i<carrito.alimentos.length ; i++){
-            if(carrito.alimentos[i].id == obj){
-                carrito.alimentos[i].cantidad++
-                console.log('aumento la candidad', carrito.alimentos[i])
+        for(var i=0; i<carrito.length ; i++){
+            if(carrito[i].id == obj){
+                carrito[i].cantidad++;
+                console.log('aumento la candidad');
+                localStorage.setItem('carrito', JSON.stringify(carrito));
                 flag = true
                 break;
             } 
@@ -26,32 +56,31 @@ function Alimento(){
 
             if (flag == false) {
                 console.log('No match, adding product')
-                carrito.alimentos.push({
+                carrito.push({
                     id: obj,
                     cantidad: 1
                 })
+                localStorage.setItem('carrito', JSON.stringify(carrito));
             }
     }  
 
     
     
-    else {
-        console.log('anadiendo producto desde cero')
-        carrito.alimentos.push({
-            id: obj,
-            cantidad: 1
-        })
-    }
-    console.log('carrito', carrito.alimentos)
+    // else {
+    //     console.log('anadiendo producto desde cero')
+    //     carrito.push({
+    //         id: obj,
+    //         cantidad: 1
+    //     })
+    // }
+    console.log('final', JSON.parse(localStorage.getItem('carrito')))
     }
 
 
 
     const getAlimentos = `http://127.0.0.1:8000/api/alimentos`
 
-    const carrito = {
-        alimentos: []
-    }
+    
 
     const [alimentos, setAlimentos] = useState(null);
 
@@ -69,11 +98,14 @@ function Alimento(){
             <div className="row">
                 <div className="col-md-10 offset-1 gap-up gap-down">
                 {alimentos.results.map(alimento => (
-                    <div className='row'>
+                    <div className='row white-font gap-down border-bottom some-padding'>
                         <div className='col-md-3'>Foto</div>
                         <div className='col-md-3'>{alimento.nombre}</div>
                         <div className='col-md-2'>{alimento.costo}</div>
-                        <div className='col-md-3'> <div className='btn btn-success' onClick={(e) => addCart(alimento.id, e)}>Anadir</div> </div>
+                        <div className='col-md-3'>
+
+                        {(alimento.cantidad > 0) ? <div className='btn btn-success' onClick={(e) => addCart(alimento.id, e)}>Anadir</div> : <div className='btn btn-secondary'>Agotado</div>}
+                          </div>
                     </div>
   ))}
                     
