@@ -6,17 +6,17 @@ export default class TabAliment extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            alimento: []
+            alim: []
         }
     }
     componentDidMount() {
         const url1 = `http://127.0.0.1:8000/api/alimentos/`
         axios.get(url1).then(res => {
-            this.setState({ alimento: res.data.results })
+            this.setState({ alim: res.data.results })
         })
     }
     render() {
-        const { alimento } = this.state
+        const { alim } = this.state
         return (
             <table class="table table-dark table-hover table-bordered table-sm">
                 <thead>

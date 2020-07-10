@@ -6,18 +6,18 @@ export default class TabPeli extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            pelicula: []
+            peli: []
         }
     }
     componentDidMount() {
         const url1 = `http://127.0.0.1:8000/api/movies/`
         axios.get(url1).then(res => {
-            this.setState({ pelicula: res.data.results })
+            this.setState({ peli: res.data.results })
         })
     }
     
     render() {
-        const { pelicula } = this.state
+        const { peli } = this.state
         return (
             <table class="table table-dark table-hover table-bordered table-sm">
                 <thead>
