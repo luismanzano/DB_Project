@@ -32,7 +32,7 @@ class ProductoSerializer(serializers.ModelSerializer):
 class ProyeccionesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Proyecciones
-        fields = ('id', 'fecha', 'inicio', 'id_salas', 'id_pelicula', 'asientos_vendidos')
+        fields = ('id', 'fecha', 'inicio', 'id_salas', 'id_pelicula', 'asientos_vendidos', 'exists')
 
 
 class SalasSerializer(serializers.ModelSerializer):

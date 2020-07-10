@@ -59,6 +59,7 @@ class Proyecciones(models.Model):
     id_salas = models.ForeignKey('Salas', models.DO_NOTHING, db_column='id_salas')
     id_pelicula = models.ForeignKey(MainMovie, models.DO_NOTHING, db_column='id_pelicula')
     asientos_vendidos = models.FloatField()
+    exists = models.IntegerField()
 
     class Meta:
         managed = False
