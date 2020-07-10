@@ -3,23 +3,40 @@ import axios from 'axios'
 
 function Carrito(){
 
-    function pay(carrito, e){
+    function pay(carrito, montoTotal, e){
         e.preventDefault();
 
         carrito.map(alimento => {
-            axios.get(`http://127.0.0.1:8000/api/alimentos/${alimento.id}`)
+            axios.get(`http://127.0.0.1:8000/api/alimentos/${alimento.id}/`)
             .then( res => {
                 let cant = res.data.cantidad - alimento.cantidad
                 console.log('pagando', res)
-                axios.put(`http://127.0.0.1:8000/api/alimentos/${alimento.id}`, {
-                    cantidad: cant
-                })
+                axios.put(`http://127.0.0.1:8000/api/alimentos/${alimento.id}/`, {
+                    id: res.data.id,
+                    nombre : 'les pruebas',
+                    costo : res.data.costo,
+                    cantidad : parseInt(res.data.cantidad) - parseInt(alimento.cantidad),
+                    categoria : res.data.categoria,
+                    caducidad : res.data.caducidad,
+                    id_producto : res.data.id_producto,
+
+                }).then( succ => {console.log('succ', succ)}).catch( err => {console.log('err', err)})
 
 
             })
         })
 
-        axios.post(`http://127.0.0.1:8000/api/venta`)
+        let date = new Date();
+        let year = date.getFullYear().toString();
+        let month = date.getMonth().toString();
+        let day = date.getDay().toString();
+        let send = year.concat(month).concat(day);
+
+        axios.post(`http://127.0.0.1:8000/api/ventas/`, {
+            fecha: send,
+            id_cliente: 111,
+            monto_total: montoTotal
+        })
     }
 
     const getAlimentos = `http://127.0.0.1:8000/api/alimentos/`
@@ -79,7 +96,7 @@ else if (carrito != null && carrito != ''){
         
                         <div className="row">
                             <div className="col-md-3 offset-9 text-center gap-up gap-down">
-                                <button className="btn btn-success" onClick={(e) => pay(carrito, e)}>Pagar</button>
+                                <button className="btn btn-success" onClick={(e) => pay(carrito, montoTotal, e)}>Pagar</button>
                             </div>
                         </div>
                     </div>
