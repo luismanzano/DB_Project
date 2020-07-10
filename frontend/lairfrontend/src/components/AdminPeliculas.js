@@ -6,7 +6,7 @@ function AdminPeliculas(){
 //EL URL CON LAS PELICULAS (VA A CAMBIAR CUANDO COLOQUEMOS MAS TABLAS)
 //LA DIRECCION http://127.0.0.1:8000/api PUEDE CAMBIAR DEPENDIENDO DE SU COMPUTADORA
 //SI NO USA LA MISMA INTENTEN CONFIGURARLA PARA QUE TODOS USEMOS LA MISMA
-    const url = `http://127.0.0.1:8000/api`
+    const url = `http://127.0.0.1:8000/api/movies/`
 
     const [movies, setMovies] = useState(null);
 
@@ -16,7 +16,7 @@ function AdminPeliculas(){
     useEffect(() => {
       axios.get(url).then(res => {
         console.log(res.data);
-        setMovies(res.data);
+        setMovies(res.data.results);
         console.log(movies)
     })
     }, [url])
@@ -40,10 +40,10 @@ function AdminPeliculas(){
       <th scope="col">Proyectando</th>
     </tr>
   </thead>
-  <tbody>
+    <tbody>
    {movies.map(movie => (
     <tr>
-      <th scope="row">{movie.id}</th>
+      <th>{movie.id}</th>
       <td>{movie.title}</td>
       <td>{movie.duration}</td>
       <td>{movie.director}</td>
@@ -51,9 +51,7 @@ function AdminPeliculas(){
       <td>{movie.language}</td>
       <td>{movie.showing ? 'Si' : '$No'}</td>
     </tr>
-  ))}
-
-  </tbody>
+  ))}</tbody>
 </table>
 
 
@@ -81,7 +79,11 @@ function AdminPeliculas(){
       return (
         <h2>Cargando</h2>
       )
-    }    
+    }
+
+
+
+    
 }
 
 export default AdminPeliculas;
