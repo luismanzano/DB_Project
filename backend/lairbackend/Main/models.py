@@ -7,8 +7,6 @@ class Movie (models.Model):
     reparto = models.TextField()
     showing = models.BooleanField()
     director = models.CharField(max_length=120)
-    genre = models.CharField(max_length=120)
-    language = models.CharField(max_length=120)
     synopsis = models.TextField()
     thumbnail = models.ImageField(default='default.png', blank=True)
 
@@ -51,26 +49,11 @@ class Producto(models.Model):
         managed = False
         db_table = 'producto'
 
-
-class Proyecciones(models.Model):
-    id = models.IntegerField(primary_key=True)
-    fecha = models.DateField()
-    inicio = models.TimeField()
-    id_salas = models.ForeignKey('Salas', models.DO_NOTHING, db_column='id_salas')
-    id_pelicula = models.ForeignKey(MainMovie, models.DO_NOTHING, db_column='id_pelicula')
-    asientos_vendidos = models.FloatField()
-
-    class Meta:
-        managed = False
-        db_table = 'proyecciones'
-
-
 class Salas(models.Model):
     id = models.IntegerField(primary_key=True)
     asientos_totales = models.PositiveIntegerField()
     filas = models.PositiveIntegerField()
     columnas = models.PositiveIntegerField()
-    number_3d = models.IntegerField(db_column='3d')  # Field renamed because it wasn't a valid Python identifier.
     vip = models.IntegerField()
 
     class Meta:
@@ -91,7 +74,7 @@ class Cliente(models.Model):
 
 
 class Venta(models.Model):
-    serial = models.IntegerField(primary_key=True)
+    serial = models.AutoField(primary_key=True)
     fecha = models.DateField()
     id_cliente = models.ForeignKey(Cliente, models.DO_NOTHING, db_column='id_cliente')
     monto_total = models.FloatField()
@@ -109,7 +92,7 @@ class Alimentos(models.Model):
     categoria = models.CharField(max_length=150)
     caducidad = models.DateField()
     id_producto = models.ForeignKey('Producto', models.DO_NOTHING, db_column='id_producto')
-
+    muestra = models.ImageField(default='default.png', blank=True)
     class Meta:
         managed = False
         db_table = 'alimentos'
@@ -123,3 +106,69 @@ class AsientosOcupados(models.Model):
     class Meta:
         managed = False
         db_table = 'asientos_ocupados'
+
+class AliCombo(models.Model):
+    id_alimento = models.AutoField(primary_key=True)
+    id_combo = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'ali_combo'
+        unique_together = (('id_alimento', 'id_combo'),)
+
+class Combos(models.Model):
+    nombre = models.CharField(max_length=100)
+    costo = models.FloatField()
+    muestra = models.ImageField(default='default.png', blank=True)
+
+    class Meta:
+        managed = False
+        db_table = 'combos'
+
+class Genero(models.Model):
+    genero = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'genero'
+
+class Idioma(models.Model):
+    idioma = models.CharField(max_length=50)
+
+    class Meta:
+        managed = False
+        db_table = 'idioma'
+
+class PeliGenero(models.Model):
+    pelis = models.OneToOneField(MainMovie, models.DO_NOTHING, primary_key=True)
+    genero = models.ForeignKey(Genero, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'peli_genero'
+        unique_together = (('pelis', 'genero'),)
+
+
+class PeliIdioma(models.Model):
+    peli = models.OneToOneField(MainMovie, models.DO_NOTHING, primary_key=True)
+    idioma = models.ForeignKey(Idioma, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'peli_idioma'
+        unique_together = (('peli', 'idioma'),)
+
+class Proyecciones(models.Model):
+    id = models.IntegerField(primary_key=True)
+    fecha = models.DateField()
+    inicio = models.TimeField()
+    id_salas = models.ForeignKey('Salas', models.DO_NOTHING, db_column='id_salas')
+    id_pelicula = models.ForeignKey(MainMovie, models.DO_NOTHING, db_column='id_pelicula')
+    asientos_vendidos = models.FloatField(default= '0')
+    idioma = models.ForeignKey(Idioma, models.DO_NOTHING, db_column='idioma')
+    number_3d = models.IntegerField(db_column='3D')  # Field name made lowercase. Field renamed because it wasn't a valid Python identifier.
+
+    class Meta:
+        managed = False
+        db_table = 'proyecciones'
+
