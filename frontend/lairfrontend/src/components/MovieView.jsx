@@ -16,7 +16,8 @@ export default class MovieView extends Component{
         this.state={
             movie: Object,
             funciones:[],
-            salas:[]
+            salas:[],
+            asientosVendidos:[]
         }
         this.sumaContador=this.sumaContador.bind(this);
         this.reiniciarContador=this.reiniciarContador.bind(this);
@@ -44,6 +45,10 @@ export default class MovieView extends Component{
                 .then(res=>{
                     const sala = res.data.asientos_totales
                     this.setState({salas:this.state.salas.concat([sala])})
+                })
+                axios.get(`http://127.0.0.1:8000/api/asientosOcupados/${funcion.id}`).then(res=>{
+                    const asiento = res.data.count
+                    this.setState({asientosVendidos:this.state.asientosVendidos.concat([asiento])})
                     console.log(this.state)
                 })
             })
@@ -166,7 +171,7 @@ export default class MovieView extends Component{
                                 <td scope="row">{funcion.inicio}</td>
                                 <td>{this.state.movie.language}</td>
                                 <td></td>
-                                <td scope="row">{this.x = this.state.salas[this.contador]-funcion.asientos_vendidos}</td>
+                                <td scope="row">{this.x = this.state.salas[this.contador]-this.state.asientosVendidos[this.contador]}</td>
                                 {this.sumaContador()}
                                 <td><Link to={`/comprarFuncion/${funcion.id}`} style={{color:'white', fontFamily:'Gill Sans'}} ><img id="botonCompra" src={comprar} alt=""/></Link></td>
                             </tr> 

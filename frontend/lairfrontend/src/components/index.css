@@ -9,6 +9,9 @@
 .gap-down{
     margin-bottom: 2em;
 }
+.gap-left{
+    margin-left: 1em;
+}
 
 .fondoMorado{
     background-color:rgb(41,5,82);
@@ -60,3 +63,13 @@
     border-radius: 10px;
     width: 50%;
 }
+
+.titulo{
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.bold{
+    font-weight: bold;
+}
+
