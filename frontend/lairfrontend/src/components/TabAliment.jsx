@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react'
 import axios from 'axios'
 
-function TabAliment() {
+export default class TabAliment extends Component {
 
-    const url = `http://127.0.0.1:8000/api/alimentos/`
-
-    const [alim, setAlimentos] = useState([]);
-
-    useEffect(() => {
-        axios.get(url).then(res => {
-            console.log(res.data);
-            setAlimentos(res.data.results);
-            console.log(alim)
+    constructor(props) {
+        super(props)
+        this.state = {
+            alimento: []
+        }
+    }
+    componentDidMount() {
+        const url1 = `http://127.0.0.1:8000/api/alimentos/`
+        axios.get(url1).then(res => {
+            this.setState({ alimento: res.data.results })
         })
-    }, [url])
-
-    if (alim != null) {
+    }
+    render() {
+        const { alimento } = this.state
         return (
             <table class="table table-dark table-hover table-bordered table-sm">
                 <thead>
@@ -51,13 +52,6 @@ function TabAliment() {
                     ))}
                 </tbody>
             </table>
-
         )
-    } else {
-        return (
-            <h2>Cargando</h2>
-        )
-    }
+    } 
 }
-
-export default TabAliment;

@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react'
 import axios from 'axios'
 
-function TabPeli() {
+export default class TabPeli extends Component {
 
-    const url = `http://127.0.0.1:8000/api/movies/`
-
-    const [peli, setPeliculas] = useState([]);
-
-    useEffect(() => {
-        axios.get(url).then(res => {
-            console.log(res.data);
-            setPeliculas(res.data.results);
-            console.log(peli)
+    constructor(props) {
+        super(props)
+        this.state = {
+            pelicula: []
+        }
+    }
+    componentDidMount() {
+        const url1 = `http://127.0.0.1:8000/api/movies/`
+        axios.get(url1).then(res => {
+            this.setState({ pelicula: res.data.results })
         })
-    }, [url])
-
-    if (peli != null) {
+    }
+    
+    render() {
+        const { pelicula } = this.state
         return (
             <table class="table table-dark table-hover table-bordered table-sm">
                 <thead>
@@ -55,11 +57,5 @@ function TabPeli() {
                 
             </table>
         )
-    } else {
-        return (
-            <h2>Cargando</h2>
-        )
     }
 }
-
-export default TabPeli;
