@@ -4,18 +4,6 @@ import '../App.css'
 
 function Alimento(){
 
-    // const dummy = {
-    //     alimentos: [
-    //         {
-    //         id:0,
-    //         cantidad:0
-    //         }
-    //     ]
-    // }
-
-   
-    //console.log('localstorage', JSON.parse(localStorage.getItem('carrito')))
-
     
     //FUNCION QUE AGREGA ELEMENTOS AL CARRITO
     function addCart(obj, name, cost, e){
@@ -90,18 +78,19 @@ function Alimento(){
 
     useEffect(() => {
         axios.get(getAlimentos).then(res => {
-          console.log(res.data);
+          console.log('res data', res.data);
           setAlimentos(res.data);
-          console.log(alimentos)
+          console.log('setAlimentos', alimentos)
       })
       }, [getAlimentos]);
 
-      if(alimentos != null){
+      if(alimentos != undefined){
+          console.log('alimentaciones', alimentos)
           return(
             <div className="container">
             <div className="row">
                 <div className="col-md-10 offset-1 gap-up gap-down">
-                {alimentos.results.map(alimento => (
+                {alimentos && alimentos.results.map(alimento => (
                     <div className='row white-font gap-down border-bottom some-padding'>
                         <div className='col-md-3'>Foto</div>
                         <div className='col-md-3'>{alimento.nombre}</div>
@@ -119,7 +108,7 @@ function Alimento(){
             </div>
         </div>
           )
-      } else {
+      } else if (alimentos == null) {
           return(
               <div>Cargando</div>
           )

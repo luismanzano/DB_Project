@@ -91,13 +91,13 @@ class Cliente(models.Model):
 
 
 class Venta(models.Model):
-    serial = models.IntegerField(primary_key=True)
-    fecha = models.DateTimeField()
+    serial = models.AutoField(primary_key=True)
+    fecha = models.DateField(auto_now_add=True, auto_now=False)
     id_cliente = models.ForeignKey(Cliente, models.DO_NOTHING, db_column='id_cliente')
     monto_total = models.FloatField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'venta'
 
 

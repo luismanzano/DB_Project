@@ -13,7 +13,7 @@ function Carrito(){
                 console.log('pagando', res)
                 axios.put(`http://127.0.0.1:8000/api/alimentos/${alimento.id}/`, {
                     id: res.data.id,
-                    nombre : 'les pruebas',
+                    nombre : res.data.nombre,
                     costo : res.data.costo,
                     cantidad : parseInt(res.data.cantidad) - parseInt(alimento.cantidad),
                     categoria : res.data.categoria,
@@ -29,14 +29,29 @@ function Carrito(){
         let date = new Date();
         let year = date.getFullYear().toString();
         let month = date.getMonth().toString();
+        if(month < 10)
+        month = '0'+month
         let day = date.getDay().toString();
-        let send = year.concat(month).concat(day);
+        if(day < 10)
+        day = '0'+day
+        let send = year + '-' + month + '-' + day
+        send = send.toString()
+        console.log('send', send)
+
+        axios.get(`http://127.0.0.1:8000/api/ventas/`).then(succ => {console.log('me traigo ventas', succ)})
 
         axios.post(`http://127.0.0.1:8000/api/ventas/`, {
-            fecha: send,
-            id_cliente: 111,
+            id_cliente: 17,
             monto_total: montoTotal
+        }).then(succ => {
+            console.log('succ de venta', succ)
+            alert('Su compra se ha realizado exitosamente')
+            localStorage.setItem('carrito', '')
         })
+        .catch(err => {console.log('error ventas', err); console.log('send2', send)})
+
+
+
     }
 
     const getAlimentos = `http://127.0.0.1:8000/api/alimentos/`
