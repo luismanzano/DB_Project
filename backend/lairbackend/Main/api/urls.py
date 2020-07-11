@@ -12,7 +12,9 @@ AsientosOcupadosViewSet,
 CarteleraView,
 ProyeccionesView,
 AsientosOcupadosView,
-top5View
+top5View,
+AliComboViewset,
+CombosViewset
 )
 from rest_framework.routers import DefaultRouter
 # from .views import MovieListView, MovieDetailView, MovieCreateView, MovieUpdateView
@@ -33,6 +35,8 @@ router.register(r'salas', SalasViewSet, basename='salas')
 router.register(r'ventas', VentasViewSet, basename='ventas')
 router.register(r'alimentos', AlimentosViewSet, basename='alimentos')
 router.register(r'asientos', AsientosOcupadosViewSet, basename='asientos')
+router.register(r'aliCombos', AliComboViewset, basename='alicombos')
+router.register(r'combos', CombosViewset, basename='combos')
 
 #Url especificos
 router.register(r'cartelera', CarteleraView, basename='cartelera')
