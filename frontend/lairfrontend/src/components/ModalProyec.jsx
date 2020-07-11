@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 
+
 export default class ModalProyec extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
             salas: [],
-            movies: []
+            movies: [],
+            date: '',
+            start: '',
+            sala: '',
+            movie: '',
         }
     }
 
@@ -21,6 +26,61 @@ export default class ModalProyec extends Component {
             this.setState({ movies: res.data.results })
         })
     }
+
+
+    handleDate(event){
+        this.setState({date: event.target.value})
+        console.log('date', this.state.movie)
+        
+    }
+
+    handleStart(event){
+        let a = event.target.value.toString()
+         a = a +':00'
+        this.setState({start: a})
+        console.log('start', this.state.movie)
+        
+    }
+
+
+    handleSala(event){
+        this.setState({sala: event.target.value})
+        console.log('sala', this.state.sala)
+        
+    }
+
+    handleMovie(event){
+        console.log('event', event.target.value)
+         let a = event.target.value
+        console.log('a', a)
+        this.setState({movie: a})
+        console.log('movie', this.state.movie)
+        console.log('a2', a)
+        
+    }
+
+
+    addProyection(e){
+        e.preventDefault();
+
+        console.log('date', this.state.date)
+        console.log('start', this.state.start)
+        console.log('sala', this.state.sala)
+        console.log('movie', this.state.movie)
+
+        axios.post(`http://127.0.0.1:8000/api/proyecciones/`, {
+            fecha: this.state.date.toString(),
+            inicio: this.state.start.toString(),
+            id_salas: parseInt(this.state.sala),
+            id_pelicula: parseInt(this.state.movie),
+            asientos_vendidos: 0,
+            exists: 1
+
+        }).then(succ => {console.log('succ', succ)}).catch(err=>{console.log('err', err)})
+        .catch(err => {console.log('err', err)})
+    }
+
+
 
     render() {
         const { salas } = this.state
@@ -36,25 +96,25 @@ export default class ModalProyec extends Component {
                     <div class="modal-body">
                         <form action="">
                             <div>
-                                <label className="text-dark"><b>Por favor rellene todos los campos</b></label>
+                                <label className="text-dark" ><b>Por favor rellene todos los campos</b></label>
                                 <br />
-                                <label className="text-dark">Fecha</label>
-                                <input type="date" class="form-control"  />
+                                <label className="text-dark" >Fecha</label>
+                                <input type="date" class="form-control"  onChange={e =>this.handleDate(e)}/>
                                 <br />
-                                <label className="text-dark">Hora de Inicio</label>
-                                <input type="time" class="form-control" />
+                                <label className="text-dark" >Hora de Inicio</label>
+                                <input type="time" class="form-control" onChange={e =>this.handleStart(e)}/>
                                 <br />
-                                <label className="text-dark">Sala</label>
-                                <select class="form-control form-control-sm" id="Sala">
+                                <label className="text-dark" >Sala</label>
+                                <select class="form-control form-control-sm" id="Sala" onChange={e => this.handleSala(e)}>
                                     {salas.map(sala => (
-                                        <option>{sala.id}</option>
+                                        <option value={sala.id}>{sala.id}</option>
                                     ))}
                                 </select>
                                 <br />
                                 <label className="text-dark">Pelicula</label>
-                                <select class="form-control form-control-sm" id="Pelicula">
+                                <select class="form-control form-control-sm" id="Pelicula" onChange={e => this.handleMovie(e)}>
                                     {movies.map(movie => (
-                                        <option>{movie.title}</option>
+                                        <option value={movie.id}>{movie.title}</option>
                                     ))}
                                 </select>
                                 <br />
@@ -64,7 +124,7 @@ export default class ModalProyec extends Component {
                     </div>
                     <div class="modal-footer table-dark">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary">Agregar</button>
+                        <button type="button" class="btn btn-success" onClick={(e)=> this.addProyection(e)}>Agregar</button>
                     </div>
                 </div>
             </div>
