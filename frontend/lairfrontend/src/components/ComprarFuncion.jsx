@@ -107,8 +107,8 @@ export default class ComprarFuncion extends Component{
            this.state.asientos.map(asiento=>{
             if(asiento.fila==this.state.tabla[i].fila&&this.state.tabla[i].columna){
                 let tabla = this.state.tabla;
-                tabla[asiento.id].ocupado = true;
-                tabla[asiento.id].imagen=asientoOc;
+                tabla[i].ocupado = true;
+                tabla[i].imagen=asientoOc;
                 this.setState({ tabla });
             } 
            }) 
@@ -160,7 +160,6 @@ export default class ComprarFuncion extends Component{
             this.setState({ tabla });
             this.asientosSelect=this.asientosSelect-1
             this.setState({asientoMostrar:this.state.asientoMostrar+1})
-
         } else if(tabla[e].imagen==asientoDes){
             if(this.cantEntrada==this.asientosSelect){
                 alert("Cantidad Máxima de asientos seleccionada")
@@ -171,6 +170,7 @@ export default class ComprarFuncion extends Component{
                 this.setState({ tabla });
                 this.asientosSelect=this.asientosSelect+1
                 this.setState({asientoMostrar:this.state.asientoMostrar-1})
+                alert("Asiento" + e)
             }
         }
     }
@@ -182,6 +182,8 @@ export default class ComprarFuncion extends Component{
     handleDate(e){ this.setState({date:e.target.value})}
 
     pagar(){
+        console.log("Estado final")
+        console.log(this.state)
         if(this.asientosSelect==0||this.state.asientoMostrar!=0){
             alert("Porfavor seleccione sus asientos")
         }else if(this.state.name==''||this.state.lastName==''||this.state.email==''||this.state.ci==0||this.state.date==0){
