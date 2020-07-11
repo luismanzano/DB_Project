@@ -7,7 +7,8 @@ export default class ModalAliment extends Component {
         super(props)
         this.state = {
             salas: [],
-            movies: []
+            movies: [],
+            
         }
     }
     componentDidMount() {
