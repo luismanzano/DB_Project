@@ -17,7 +17,6 @@ export default class ComprarFuncion extends Component{
             columnas:Number,
             tabla:[],
             asientos:[],
-            aSelected:[],
             movie: Object,
             habTabla: false,
             asientoMostrar:0,
@@ -28,6 +27,7 @@ export default class ComprarFuncion extends Component{
             ci:'',
             date:'',
             id:0,
+            aSelected: []
             
         }
 
@@ -84,19 +84,14 @@ export default class ComprarFuncion extends Component{
                         this.setState({sala:sala})
                         let x = 0
                         let y = 0
+                        console.log(fila,colum)
                         for(var i=0; i < this.state.filas; i++){
                             for(var j=0; j < this.state.columnas;j++){
-                                this.state.asientos.map(asiento=>{
-                                    if(asiento.fila==i&&asiento.columna==j){
-                                        this.setState({tabla:this.state.tabla.concat([{id:x, fila:i, columna:j, ocupado:true, imagen:asientoOc, selected:false}])})
-                                        x=x+1;
-                                        j++;
-                                    } 
-                                })
                                 this.setState({tabla:this.state.tabla.concat([{id:x, fila:i, columna:j, ocupado:false, imagen:asientoDes, selected:false}])})
                                 x=x+1;
                             }
                         }
+                        this.ocuparAsiento()
                 x=0;
             })
                 })
@@ -108,21 +103,16 @@ export default class ComprarFuncion extends Component{
 
 
     ocuparAsiento(){
-        let x = 0
-        this.state.tabla.map(a=>{
-            if(x<this.state.asientos.length){
-                if(this.state.asientos[x].fila==a.fila){
-                    if(this.state.asientos[x].columna==a.columna){
-                            console.log(x)
-                            let tabla = this.state.tabla;
-                            tabla[a.id].ocupado = true;
-                            tabla[a.id].imagen=asientoOc;
-                            this.setState({ tabla });
-                            x=x+1;
-                    }
-                }
+        for(var i=0; i<this.state.tabla.length; i++){
+           this.state.asientos.map(asiento=>{
+            if(asiento.fila==this.state.tabla[i].fila&&this.state.tabla[i].columna){
+                let tabla = this.state.tabla;
+                tabla[asiento.id].ocupado = true;
+                tabla[asiento.id].imagen=asientoOc;
+                this.setState({ tabla });
             } 
-        })
+           }) 
+        }
     }
 
     habilitarTabla(){
@@ -163,7 +153,7 @@ export default class ComprarFuncion extends Component{
     handleClick(e){
         let tabla = this.state.tabla;
         if(tabla[e].imagen==asientoOc){
-            alert('Asiento Ocupado, porfavor seleccione otro')
+            alert('Asiento Ocupado, porfavor seleccione otro' + e)
         } else if(tabla[e].imagen==asientoSelec){
             tabla[e].imagen=asientoDes;
             tabla[e].selected=false;
@@ -175,6 +165,7 @@ export default class ComprarFuncion extends Component{
             if(this.cantEntrada==this.asientosSelect){
                 alert("Cantidad Máxima de asientos seleccionada")
             } else {
+                console.log(e)
                 tabla[e].imagen=asientoSelec;
                 tabla[e].selected=true;
                 this.setState({ tabla });
@@ -211,7 +202,6 @@ export default class ComprarFuncion extends Component{
                         console.log(error.response)
                     });
                     this.countId++;
-                    
                 }
                 
             })
@@ -273,16 +263,17 @@ export default class ComprarFuncion extends Component{
                                 </div>
                             </div>
                         </div>
+
                         <div className="row gap-up gap-down">
                             <div className="tabla offset-2 col-md-8 text-center gap-down">
                                 {this.state.tabla.map(asiento=>(
                                     <div key={asiento.id}>
                                         <img onClick={this.handleClick.bind(this, asiento.id)} className="asientos" src={asiento.imagen} alt=""/>
                                     </div>
-                                    
                                 ))}
                             </div>
                         </div>
+                        
                         <hr/>
                         <div className="row">
                             <div className="col-md-10 offset-1 gap-up">
