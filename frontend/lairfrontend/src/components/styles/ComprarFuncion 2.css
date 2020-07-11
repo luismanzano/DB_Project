@@ -1,0 +1,30 @@
+#selecciona{
+    font-size: larger;
+    font-weight: bold;
+}
+
+.a{
+    font-size: large;
+    font-weight: bold;
+}
+
+.tabla{
+    display: grid;
+    grid-template-columns: repeat(6, 50px);
+    grid-template-rows: repeat(6, 50px);
+    grid-column-gap: 3.5em;
+    grid-row-gap: 2em;
+}
+
+.asientos{
+    width: 100%;
+    cursor: pointer;
+}
+
+.typeNumber{
+    width: 50px;
+}
+
+.gap-input{
+    margin-bottom: 1em;
+}
