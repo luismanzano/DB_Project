@@ -61,7 +61,7 @@ class AliComboSerializer(serializers.ModelSerializer):
 class CombosSerializer(serializers.ModelSerializer):
     class Meta:
         model = Combos
-        fields = ('nombre', 'costo', 'muestra', 'existo')
+        fields = ('id', 'nombre', 'costo', 'muestra', 'existo')
 
 
 class AlimentosSerializer(serializers.ModelSerializer):
