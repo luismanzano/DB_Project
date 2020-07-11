@@ -105,7 +105,7 @@ export default class ComprarFuncion extends Component{
     ocuparAsiento(){
         for(var i=0; i<this.state.tabla.length; i++){
            this.state.asientos.map(asiento=>{
-            if(asiento.fila==this.state.tabla[i].fila&&this.state.tabla[i].columna){
+            if(asiento.fila==this.state.tabla[i].fila&&asiento.columna==this.state.tabla[i].columna){
                 let tabla = this.state.tabla;
                 tabla[i].ocupado = true;
                 tabla[i].imagen=asientoOc;
@@ -153,7 +153,7 @@ export default class ComprarFuncion extends Component{
     handleClick(e){
         let tabla = this.state.tabla;
         if(tabla[e].imagen==asientoOc){
-            alert('Asiento Ocupado, porfavor seleccione otro' + e)
+            alert('Asiento Ocupado, porfavor seleccione otro')
         } else if(tabla[e].imagen==asientoSelec){
             tabla[e].imagen=asientoDes;
             tabla[e].selected=false;
@@ -170,7 +170,6 @@ export default class ComprarFuncion extends Component{
                 this.setState({ tabla });
                 this.asientosSelect=this.asientosSelect+1
                 this.setState({asientoMostrar:this.state.asientoMostrar-1})
-                alert("Asiento" + e)
             }
         }
     }
@@ -196,8 +195,8 @@ export default class ComprarFuncion extends Component{
                         id:this.countId,
                         columna:asiento.columna,
                         fila:asiento.fila,
-                        existo:0,
-                        id_funciones:this.state.id
+                        id_funciones:this.state.id,
+                        existo:0
                     }).then(response => { 
                         console.log(response)
                     })
