@@ -29,10 +29,11 @@
 
 #select{
     width: 200%;
+    margin-top: 0.5em;
 }
 
 #select2{
-    margin-top: 0.3em;
+    margin-top: 0.8em;
     width: 150%;
 }
 

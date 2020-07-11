@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 
 
 
-const url = `http://127.0.0.1:8000/api/movies/`
+const url = `http://127.0.0.1:8000/api/cartelera/`
 
 export default class Cartelera extends Component{
 

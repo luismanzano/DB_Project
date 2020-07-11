@@ -16,6 +16,7 @@
     width: 100%;
     bottom: 0;
     display: none;
+    height: 3em;
 }
 
 .contenedor:hover .comprar{

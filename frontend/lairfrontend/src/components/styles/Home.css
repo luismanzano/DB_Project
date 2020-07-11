@@ -1,17 +1,15 @@
-.peliculas{
-    height: 5em;
-    width: 100%;
-}
 
 #popcorn{
-    width: 50%;
+    width: 100%;
     margin-top: 0;
+    margin-left: 0;
 }
 
 #popcorn2{
-    width: 50%;
+    width: 100%;
     margin-top: 0;
     object-position: right;
+    margin-right: 0;
 }
 
 .imagen{
@@ -23,13 +21,23 @@
 }
 
 .pelicula{
-    width: 110%;
-    height: 14em;
+    width: 100%;
 }
 
 .secretCombo{
     cursor: pointer;
 }
+
+.comprar{
+    position: absolute;
+    background-color:rgba(64, 64, 64, 0.6);
+    width: 100%;
+    bottom: 0;
+    display: none;
+    height: 3em;
+}
+
+
 
 
 
