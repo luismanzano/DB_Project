@@ -53,7 +53,7 @@ class Producto(models.Model):
 
 
 class Proyecciones(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     fecha = models.DateField()
     inicio = models.CharField(max_length=8)
     # id_salas = models.ForeignKey('Salas', models.DO_NOTHING, db_column='id_salas')
