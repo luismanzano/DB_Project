@@ -55,10 +55,12 @@ class Producto(models.Model):
 class Proyecciones(models.Model):
     id = models.IntegerField(primary_key=True)
     fecha = models.DateField()
-    inicio = models.TimeField()
-    id_salas = models.ForeignKey('Salas', models.DO_NOTHING, db_column='id_salas')
-    id_pelicula = models.ForeignKey(MainMovie, models.DO_NOTHING, db_column='id_pelicula')
-    asientos_vendidos = models.FloatField()
+    inicio = models.CharField(max_length=8)
+    # id_salas = models.ForeignKey('Salas', models.DO_NOTHING, db_column='id_salas')
+    # id_pelicula = models.ForeignKey(MainMovie, models.DO_NOTHING, db_column='id_pelicula')
+    id_salas = models.IntegerField()
+    id_pelicula = models.IntegerField()
+    asientos_vendidos = models.IntegerField()
     exists = models.IntegerField()
 
     class Meta:

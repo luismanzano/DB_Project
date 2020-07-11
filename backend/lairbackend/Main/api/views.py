@@ -21,6 +21,8 @@ AlimentosSerializer,
 AsientosOcupadosSerializer
 )
 from rest_framework import viewsets
+from django.shortcuts import get_object_or_404
+# from rest_framework import Response
 
 
 class MovieViewSet(viewsets.ModelViewSet):
@@ -129,6 +131,22 @@ class top5View(ListAPIView):
     serializer_class = MovieSerializer
 
     queryset = Movie.objects.all().order_by('-id')[:5]
+
+
+# class AmountPartialUpdateView(APIView):
+
+#     def patch(self, request, pk, amount):
+#         # if no model exists by this PK, raise a 404 error
+#         model = get_object_or_404(Proyecciones, pk=pk)
+#         # this is the only field we want to update
+#         data = {"amount": model.amount + int(amount)}
+#         serializer = ProyeccionesSerializer(model, data=data, partial=True)
+
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data)
+#         # return a meaningful error response
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 

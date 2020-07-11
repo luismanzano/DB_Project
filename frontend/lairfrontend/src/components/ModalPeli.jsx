@@ -48,10 +48,20 @@ export default class ModalProyec extends Component {
                                 <input type="text" class="form-control"  />
                                 <br />
                                 <label className="text-dark">Genero</label>
-                                <input type="text" class="form-control"  />
+                                <select name="genero" id="genero">
+                                <option value="volvo">Drama</option>
+                                <option value="saab">Comedia</option>
+                                <option value="mercedes">Accion</option>
+                                <option value="audi">Fantasia</option>
+                                </select>
                                 <br />
                                 <label className="text-dark">Idioma</label>
-                                <input type="text" class="form-control"  />
+                                <select name="cars" id="cars">
+                                <option value="volvo">Ingles</option>
+                                <option value="saab">Español</option>
+                                <option value="mercedes">Frances</option>
+                                <option value="audi">Aleman</option>
+                                </select>
                                 <br />
                                 <label className="text-dark">Sinopsis</label>
                                 <textarea class="form-control"  rows="3"></textarea>

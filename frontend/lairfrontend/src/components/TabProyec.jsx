@@ -31,16 +31,26 @@ export default class TabProyec extends Component {
                 })
             });
         })
-
         
         axios.put(`http://127.0.0.1:8000/api/proyecciones/${parametro}/`, {
+            id: parseInt(k.id),
+            fecha: k.fecha,
+            inicio: k.inicio.toString(),
+            id_salas: k.salas,
+            id_pelicula: k.id_pelicula,
+            asientos_vendidos: k.asientos_vendidos,
+            exists: 0
+        }
+            )
+
+        /** , {
             fecha: k.fecha,
             inicio: k.inicio,
             id_salas: k.salas,
             id_pelicula: k.id_pelicula,
             asientos_vendidos: k.asientos_vendidos,
-            exists: false
-        })
+            exists: 0
+        } */
         
     }
     render() {

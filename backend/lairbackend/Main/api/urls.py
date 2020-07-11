@@ -20,6 +20,7 @@ from rest_framework.routers import DefaultRouter
 urlpatterns = [
     path('proyeccionesPelicula/<pk>', ProyeccionesView.as_view()),
     path('asientosOcupados/<pk>', AsientosOcupadosView.as_view()),
+    # path('existeProyeccion/<unocero>', ExisteProyeccionView.as_view()),
     path('top5/', top5View.as_view()),
 ]
 
