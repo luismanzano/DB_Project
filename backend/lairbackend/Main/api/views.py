@@ -11,10 +11,6 @@ Alimentos,
 AsientosOcupados,
 AliCombo,
 Combos,
-Genero,
-Idioma,
-PeliGenero,
-PeliIdioma
 )
 from .serializers import (MovieSerializer,
 EntradasSerializer,
@@ -27,10 +23,6 @@ AlimentosSerializer,
 AsientosOcupadosSerializer,
 AliComboSerializer,
 CombosSerializer,
-GeneroSerializer,
-IdiomaSerializer,
-PeliGeneroSerializer,
-PeliIdiomaSerializer
 )
 
 from rest_framework import viewsets
@@ -118,33 +110,6 @@ class CombosViewSet(viewsets.ModelViewSet):
     serializer_class = CombosSerializer
     queryset = Combos.objects.all()
 
-class GeneroViewSet(viewsets.ModelViewSet):
-    """
-    A viewset for viewing and editing user instances.
-    """
-    serializer_class = GeneroSerializer
-    queryset = Genero.objects.all()
-
-class IdiomaViewSet(viewsets.ModelViewSet):
-    """
-    A viewset for viewing and editing user instances.
-    """
-    serializer_class = IdiomaSerializer
-    queryset = Idioma.objects.all()
-
-class PeliGeneroViewSet(viewsets.ModelViewSet):
-    """
-    A viewset for viewing and editing user instances.
-    """
-    serializer_class = PeliGeneroSerializer
-    queryset = PeliGenero.objects.all()
-
-class PeliIdiomaViewSet(viewsets.ModelViewSet):
-    """
-    A viewset for viewing and editing user instances.
-    """
-    serializer_class = PeliIdiomaSerializer
-    queryset = PeliIdioma.objects.all()
 
 
 
@@ -182,49 +147,6 @@ class top5View(ListAPIView):
     serializer_class = MovieSerializer
 
     queryset = Movie.objects.all().order_by('-id')[:5]
-
-class GenerosView(ListAPIView):
-    serializer_class = GeneroSerializer
-
-    def get_queryset(self):
-        idGenero = self.kwargs['pk']
-        return Genero.objects.filter(id=idGenero)
-        
-class PeliGeneroView(ListAPIView):
-    serializer_class = PeliGeneroSerializer
-
-    def get_queryset(self):
-        
-       # queryset = super().get_queryset()
-       # queryset = queryset.prefetch_related( 
-       #      Prefetch('genero_id')
-       # )
-        
-        ide = self.kwargs['t']
-        return PeliGenero.objects.filter(pelis_id=ide)
-
-class IdiomasView(ListAPIView):
-    serializer_class = IdiomaSerializer
-
-    def get_queryset(self):
-        idIdioma = self.kwargs['pk']
-        return Idioma.objects.filter(id=idIdioma)
-        
-class PeliIdiomaView(ListAPIView):
-    serializer_class = PeliIdiomaSerializer
-
-    def get_queryset(self):
-        
-       # queryset = super().get_queryset()
-       # queryset = queryset.prefetch_related( 
-       #      Prefetch('genero_id')
-       # )
-        
-        ido = self.kwargs['t']
-        return PeliIdioma.objects.filter(peli_id=ido)
-
-
-
 
 
 # class MovieListView(ListAPIView):
