@@ -8,7 +8,9 @@ Cliente,
 Salas,
 Venta,
 Alimentos,
-AsientosOcupados
+AsientosOcupados,
+AliCombo,
+Combos
 )
 from .serializers import (MovieSerializer,
 EntradasSerializer,
@@ -18,7 +20,9 @@ ClienteSerializer,
 SalasSerializer,
 VentaSerializer,
 AlimentosSerializer,
-AsientosOcupadosSerializer
+AsientosOcupadosSerializer,
+AliComboSerializer,
+CombosSerializer
 )
 from rest_framework import viewsets
 
@@ -59,6 +63,19 @@ class ClienteViewSet(viewsets.ModelViewSet):
     serializer_class = ClienteSerializer
     queryset = Cliente.objects.all()
 
+class AliComboViewset(viewsets.ModelViewSet):
+    """
+    A viewset for viewing and editing user instances.
+    """
+    serializer_class = AliComboSerializer
+    queryset = AliCombo.objects.all()
+
+class CombosViewset(viewsets.ModelViewSet):
+    """
+    A viewset for viewing and editing user instances.
+    """
+    serializer_class = CombosSerializer
+    queryset = Combos.objects.all()
 
 
 class SalasViewSet(viewsets.ModelViewSet):
