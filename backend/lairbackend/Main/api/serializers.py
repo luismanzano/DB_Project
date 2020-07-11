@@ -73,7 +73,7 @@ class AlimentosSerializer(serializers.ModelSerializer):
 class AsientosOcupadosSerializer(serializers.ModelSerializer):
     class Meta:
         model = AsientosOcupados
-        fields = ('id', 'columna', 'fila', 'id_funciones')
+        fields = ('id', 'columna', 'fila', 'id_funciones', 'existo')
 
 # class CarteleraSerializer(serializers.ModelSerializer):
 #     class Meta:
