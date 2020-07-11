@@ -196,6 +196,7 @@ export default class ComprarFuncion extends Component{
                         id:this.countId,
                         columna:asiento.columna,
                         fila:asiento.fila,
+                        existo:0,
                         id_funciones:this.state.id
                     }).then(response => { 
                         console.log(response)

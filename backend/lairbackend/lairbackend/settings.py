@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'lairbackend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'lair_cinema',
+        'NAME': 'lair_cinema2',
         'USER': 'root',
         'PASSWORD': 'eidansantiago19',
         'HOST': 'localhost',
